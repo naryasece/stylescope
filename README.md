@@ -19,7 +19,7 @@ will save all id and class selectors that contains the background, width and/or 
 
 #### style("css selector")
 
-Scopes you into the style specified by the CSS selector. Within that style scope, you can run the following functions:
+Scopes you into the style specified by the CSS selector This should be an exact match for the CSS selector, . Within that style scope, you can run the following functions:
 
 #### edit_style("property", "value")
 
@@ -36,6 +36,28 @@ Appends a new style to the end of that selector. E.g. add_style("display","block
 #### remove_style_important()
 
 Removes use of the css !important from css properties. Can be used in a style() scope or globally
+
+#### rename_selector("new-name")
+
+Changes the CSS selector for the style. E.g. you can change .foo into #bar:
+
+    .foo {
+        color: red;
+    }
+
+into:  
+
+    #bar {
+        color: red;
+    }
+
+#### remove_selector()
+
+If you are already scoped into a style, you can remove it completely.
+
+#### remove_selector("selector")
+
+Outside of the style() scope this will remove styles definitions with the matched selector.
 
 ## Example uses
 

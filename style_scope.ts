@@ -1,5 +1,6 @@
 ## CSS ripper functions
 #$mw_css_capture = ""
+# version 0.1.0
 
 
 @func XMLNode.proxy_style(Text %stylesheet_url) {
