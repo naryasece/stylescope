@@ -95,7 +95,7 @@ to output this for use in your project:
 
 For projects using newer mixers, you can drop the style_scope.ts file into your functions folder. Then include it into your project by adding  
 
-    @include style_scope.ts  
+    @import style_scope.ts  
 
 in your functions/main.ts file.  
 
