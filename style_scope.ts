@@ -74,6 +74,14 @@
   replace(/\s*!important/, "")
 }
 
+@func Text.insert_style_before(Text %selector, Text %styles) {
+  prepend(%selector +"{"+%styles+"}\n\n")
+}
+
+@func Text.insert_style_after(Text %selector, Text %styles) {
+  append("\n\n"+%selector +"{"+%styles+"}")
+}
+
 @func Text.style_prune(Text %styles_to_keep) {
   %sean = ""
   capture(/([\.\#][^{^;]+)\s+{([^}]+)}/) {
