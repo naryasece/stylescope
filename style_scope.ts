@@ -1,6 +1,6 @@
 ## CSS ripper functions
 #$mw_css_capture = ""
-# version 0.1.0
+# version 0.1.1
 
 
 @func XMLNode.proxy_style(Text %stylesheet_url) {
@@ -115,4 +115,21 @@
   }
   #log(%sean)
   set(%sean)
+}
+
+@func Text.minify_stylesheet() {
+  replace(/\n\s*/, "")
+  replace(/\/\*[^*]*\*\//, "")
+}
+
+@func Text.wrap_media_query(Text %media, Text %argument, Text %mediaFeature) {
+  match_not(%mediaFeature, /\A\z/) {
+    %mediaFeature {
+      prepend("(")
+      append(")")
+    }
+  }
+  replace(/^/, "  ") # indents slightly
+  prepend("@media "+%media+" "+%argument+" "+%mediaFeature+" {\n")
+  append("\n}")
 }

@@ -33,6 +33,20 @@ Removes that style from the selector
 
 Appends a new style to the end of that selector. E.g. add_style("display","block") adds the display block property to that selector
 
+#### insert_style_before("selector", "css")
+
+When you are scoped into a style, This lets you insert a new style selector and attributes before the CSS style you are currently scoped into. For the CSS argument, add in the styles the same as you would an inline style attribute.  
+
+e.g.  
+
+    style("#foo") {
+        insert_style_before("#preFoo", "display: block; border: 1px solid black;")
+    }
+
+#### insert_style_after("selector", "css")
+
+When you are scoped into a style, This lets you insert a new style selector and attributes after the CSS style you are currently scoped into.
+
 #### remove_style_important()
 
 Removes use of the css !important from css properties. Can be used in a style() scope or globally
@@ -58,6 +72,34 @@ If you are already scoped into a style, you can remove it completely.
 #### remove_selector("selector")
 
 Outside of the style() scope this will remove styles definitions with the matched selector.
+
+#### minify_stylesheet()
+
+Minifies the stylesheet by stripping out newlines, whitespace (before style attributes) and standard CSS comments
+
+#### wrap_media_query("media", "argument", "mediaFeature")
+
+Will wrap whatever its scope is in a media query. If it is a single style, then jsut that style. If the whole stylesheet, then everything will be wrapped in the media query.
+
+A style example:  
+
+    #foo {
+      background-color:blue;
+    }  
+
+Scope into it and wrap it in a media query:  
+
+    style("#foo") {
+        wrap_media_query("screen", "and", "max-width:500px")
+    }
+
+Would output:  
+
+    @media screen and (max-width: 500px) {
+      #foo {
+        background-color:blue;
+      }
+    }
 
 ## Example uses
 
